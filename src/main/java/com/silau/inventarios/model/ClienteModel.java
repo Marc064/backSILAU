@@ -30,10 +30,19 @@ public class ClienteModel {
     @Column(name = "APELLIDO", nullable = false)
     private String apellido;
 
+    @Column(name = "EMPRESA", nullable = true)
+    private String empresa;
+
     @Column(name = "CELULAR", nullable = false)
     private String celular;
 
     @Column(name = "CORREO", nullable = false)
     private String correo;
+
+    @Column(name = "DIRECCION", nullable = false)
+    private String direccion;
+
+    @Column(name = "ACTIVO", nullable = false)
+    private boolean activo;
 
 }

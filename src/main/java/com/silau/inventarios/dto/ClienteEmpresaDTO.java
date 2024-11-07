@@ -35,6 +35,17 @@ public class ClienteEmpresaDTO {
         return clienteModel;
     }
 
+    public static ClienteModel toClienteModelUpdate(ClienteEmpresaDTO dto, ClienteModel clienteModel) {
+
+        clienteModel.setNombre(dto.getNombreCliente());
+        clienteModel.setApellido(dto.getApellidoCliente());
+        clienteModel.setCorreo(dto.getCorreoCliente());
+        clienteModel.setActivo(true);
+        clienteModel.setCelular(dto.getCelularCliente());
+
+        return clienteModel;
+    }
+
     public static EmpresaModel toEmpresaModel(ClienteEmpresaDTO dto, ClienteModel cliente){
         EmpresaModel empresaModel = new EmpresaModel();
 
@@ -45,5 +56,15 @@ public class ClienteEmpresaDTO {
 
         return empresaModel;
     }
+
+    public static EmpresaModel toEmpresaModelUpdate(ClienteEmpresaDTO dto, EmpresaModel empresaModel){
+
+        empresaModel.setNombre(dto.getNombreEmpresa());
+        empresaModel.setCodigo(dto.getCodigoEmpresa());
+        empresaModel.setDireccion(dto.getDireccionEmpresa());
+
+        return empresaModel;
+    }
+
 
 }

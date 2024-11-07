@@ -50,4 +50,23 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
+    public ClienteModel update(ClienteEmpresaDTO dto, long idCliente) {
+        ClienteModel cliente = clienteRepository.findById(idCliente).get();
+        cliente = ClienteEmpresaDTO.toClienteModelUpdate(dto, cliente);
+        EmpresaModel empresa = empresaService.findByCliente(cliente);
+        empresa = ClienteEmpresaDTO.toEmpresaModelUpdate(dto, empresa);
+        empresaRepository.save(empresa);
+        return clienteRepository.save(cliente);
+    }
+
+    public ClienteModel delete(long idCliente){
+
+        ClienteModel cliente = clienteRepository.findById(idCliente).get();
+        EmpresaModel empresa = empresaService.findByCliente(cliente);
+        clienteRepository.delete(cliente);
+        empresaRepository.delete(empresa);
+
+        return cliente;
+    }
+
 }

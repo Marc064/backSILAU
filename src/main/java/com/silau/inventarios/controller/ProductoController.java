@@ -71,8 +71,8 @@ public class ProductoController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> updateProducto(@PathVariable long id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteProducto(@PathVariable long id){
         try{
             ProductoModel result = productoService.delete(id);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);

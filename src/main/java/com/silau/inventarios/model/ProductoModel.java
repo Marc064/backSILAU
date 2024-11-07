@@ -27,8 +27,9 @@ public class ProductoModel {
     @Column(name = "NOMBRE", nullable = false)
     private String nombre;
 
-    @Column(name = "LINEA_PRODUCTO", nullable = false)
-    private String lineaProducto;
+    @ManyToOne
+    @JoinColumn(name = "LINEA_PRODUCTO", nullable = false)
+    private LineaProductoModel lineaProducto;
 
     @Column(name = "PRECIO", nullable = false)
     private double precio;

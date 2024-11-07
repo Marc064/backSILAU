@@ -31,20 +31,50 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/{nombre}")
-    public ResponseEntity<Object> findByNombre(@PathVariable String nombre){
+    @GetMapping("/product-line/{nombre}")
+    public ResponseEntity<Object> findByNombreLinea(@PathVariable String nombre){
         try{
-            List<DescripcionProductoDTO> result = productoService.findByNombre(nombre);
+            List<DescripcionProductoDTO> result = productoService.findByNombreLinea(nombre);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
         }
     }
 
-    @PostMapping("/")
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> findById(@PathVariable long id){
+        try{
+            ProductoModel result = productoService.findById(id);
+            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @PostMapping("/save")
     public ResponseEntity<Object> addProducto(@RequestBody GuardarProductoDTO dto){
         try{
             ProductoModel result = productoService.save(dto);
+            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Object> updateProducto(@RequestBody GuardarProductoDTO dto){
+        try{
+            ProductoModel result = productoService.update(dto);
+            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateProducto(@PathVariable long id){
+        try{
+            ProductoModel result = productoService.delete(id);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);

@@ -1,7 +1,9 @@
 package com.silau.inventarios.controller;
 
 import com.silau.inventarios.dto.DescripcionProductoDTO;
+import com.silau.inventarios.dto.GuardarProductoDTO;
 import com.silau.inventarios.dto.ProductoDTO;
+import com.silau.inventarios.model.ProductoModel;
 import com.silau.inventarios.responses.ResponseHandler;
 import com.silau.inventarios.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,16 @@ public class ProductoController {
     public ResponseEntity<Object> findByNombre(@PathVariable String nombre){
         try{
             List<DescripcionProductoDTO> result = productoService.findByNombre(nombre);
+            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<Object> addProducto(@RequestBody GuardarProductoDTO dto){
+        try{
+            ProductoModel result = productoService.save(dto);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);

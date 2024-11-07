@@ -1,6 +1,7 @@
 package com.silau.inventarios.service;
 
 import com.silau.inventarios.dto.DescripcionProductoDTO;
+import com.silau.inventarios.dto.GuardarProductoDTO;
 import com.silau.inventarios.dto.ProductoDTO;
 import com.silau.inventarios.model.ProductoModel;
 import com.silau.inventarios.repository.ProductoRepository;
@@ -15,6 +16,9 @@ public class ProductoService {
 
     @Autowired
     private ProductoRepository productoRepository;
+
+    @Autowired
+    private AdministradorService administradorService;
 
     public List<ProductoDTO> findAll(){
         List<ProductoModel> productosAux = productoRepository.findAll();
@@ -38,6 +42,12 @@ public class ProductoService {
         }
 
         return productos;
+    }
+
+    public ProductoModel save(GuardarProductoDTO producto){
+        ProductoModel modelo = GuardarProductoDTO.toModel(producto);
+        modelo.setAdministrador(administradorService.findById(producto.getIdAdministrador()));
+        return productoRepository.save(modelo);
     }
 
 }

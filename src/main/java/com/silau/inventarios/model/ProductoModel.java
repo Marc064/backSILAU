@@ -31,10 +31,10 @@ public class ProductoModel {
     private String lineaProducto;
 
     @Column(name = "PRECIO", nullable = false)
-    private Double precio;
+    private double precio;
 
     @Column(name = "TAMAÑO", nullable = false)
-    private Double tamano;
+    private String tamano;
 
     @Column(name = "CANTIDAD_EXISTENTE", nullable = false)
     private int cantidadExistente;

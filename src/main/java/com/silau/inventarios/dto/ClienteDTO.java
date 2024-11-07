@@ -1,6 +1,7 @@
 package com.silau.inventarios.dto;
 
 import com.silau.inventarios.model.ClienteModel;
+import com.silau.inventarios.model.EmpresaModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,13 +21,13 @@ public class ClienteDTO {
     private String celular;
     private boolean estado;
 
-    public static ClienteDTO fromModel(ClienteModel cliente){
+    public static ClienteDTO fromModel(ClienteModel cliente, EmpresaModel empresa){
 
         ClienteDTO dto = new ClienteDTO();
 
         dto.idCliente = cliente.getIdCliente();
         dto.nombre = cliente.getNombre() + cliente.getApellido();
-        dto.empresa = cliente.getEmpresa();
+        dto.empresa = empresa.getNombre();
         dto.correo = cliente.getCorreo();
         dto.direccion = cliente.getDireccion();
         dto.celular = cliente.getCelular();

@@ -29,7 +29,7 @@ public class ClienteDTO {
         dto.nombre = cliente.getNombre() + cliente.getApellido();
         dto.empresa = empresa.getNombre();
         dto.correo = cliente.getCorreo();
-        dto.direccion = cliente.getDireccion();
+        dto.direccion = empresa.getDireccion();
         dto.celular = cliente.getCelular();
         dto.estado = cliente.isActivo();
 

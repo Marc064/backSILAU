@@ -26,4 +26,17 @@ public class LineaProductoService {
         return lineaProductoRepository.findByNombreLineaContainingIgnoreCase(nombre);
     }
 
+    public LineaProductoModel save(LineaProductoModel lineaProductoModel) {
+        LineaProductoModel lineaSave = new LineaProductoModel();
+        lineaSave.setNombreLinea(lineaProductoModel.getNombreLinea());
+        return lineaProductoRepository.save(lineaSave);
+    }
+
+
+    public LineaProductoModel delete(long idLineaProducto) {
+        LineaProductoModel lineaDelete = findById(idLineaProducto);
+        lineaProductoRepository.delete(lineaDelete);
+        return lineaDelete;
+    }
+
 }

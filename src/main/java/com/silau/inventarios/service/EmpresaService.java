@@ -16,4 +16,14 @@ public class EmpresaService {
         return empresaRepository.findByCliente(cliente);
     }
 
+    public ClienteModel findByEmpresa(long idEmpresa){
+        EmpresaModel empresa = empresaRepository.findById(idEmpresa).orElse(null);
+
+        if(empresa == null){
+            return null;
+        }
+
+        return empresa.getCliente();
+    }
+
 }

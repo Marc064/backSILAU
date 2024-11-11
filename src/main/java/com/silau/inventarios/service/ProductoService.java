@@ -73,4 +73,11 @@ public class ProductoService {
         return modelo;
     }
 
+    public boolean existenciasProducto(long idProducto, int cantidad){
+        ProductoModel producto = findById(idProducto);
+        return producto.getCantidadExistente() <= cantidad;
+    }
+
+
+
 }

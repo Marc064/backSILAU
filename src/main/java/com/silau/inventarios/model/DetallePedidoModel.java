@@ -31,7 +31,4 @@ public class DetallePedidoModel {
     @Column(name = "CANTIDAD", nullable = false)
     private int cantidad;
 
-    @Column(name = "PRECIO_UNIDAD", nullable = false)
-    private double precioUnidad;
-
 }

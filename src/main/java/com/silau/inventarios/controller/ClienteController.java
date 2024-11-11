@@ -40,7 +40,7 @@ public class ClienteController {
         }
     }
 
-    @PostMapping("/{idCliente}")
+    @PutMapping("/{idCliente}")
     public ResponseEntity<Object> update(@PathVariable long idCliente, @RequestBody ClienteEmpresaDTO dto){
         try{
             ClienteModel result = clienteService.save(dto, idCliente);

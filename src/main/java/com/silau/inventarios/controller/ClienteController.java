@@ -43,7 +43,17 @@ public class ClienteController {
     @PutMapping("/{idCliente}")
     public ResponseEntity<Object> update(@PathVariable long idCliente, @RequestBody ClienteEmpresaDTO dto){
         try{
-            ClienteModel result = clienteService.save(dto, idCliente);
+            ClienteModel result = clienteService.update(dto, idCliente);
+            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @DeleteMapping("/{idCliente}")
+    public ResponseEntity<Object> delete(@PathVariable long idCliente){
+        try{
+            ClienteModel result = clienteService.delete(idCliente);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);

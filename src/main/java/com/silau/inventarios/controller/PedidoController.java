@@ -3,6 +3,7 @@ package com.silau.inventarios.controller;
 import com.silau.inventarios.dto.AgregarPedidoDTO;
 import com.silau.inventarios.dto.CantidadProductoDTO;
 import com.silau.inventarios.dto.PedidosDTO;
+import com.silau.inventarios.model.PedidoModel;
 import com.silau.inventarios.model.ProductoModel;
 import com.silau.inventarios.responses.ResponseHandler;
 import com.silau.inventarios.service.PedidoService;
@@ -74,6 +75,16 @@ public class PedidoController {
 
             AgregarPedidoDTO result = pedidoService.update(idPedido, agregarPedido);
 
+            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
+        } catch (Exception e) {
+            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
+        }
+    }
+
+    @DeleteMapping("/delete/{idPedido}")
+    public ResponseEntity<Object> delete(@PathVariable long idPedido) {
+        try{
+            PedidoModel result = pedidoService.delete(idPedido);
             return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
         } catch (Exception e) {
             return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);

@@ -79,5 +79,14 @@ public class PedidoService {
         return pedidoNuevo;
     }
 
+    public PedidoModel delete(long idPedido){
+
+        PedidoModel pedido = pedidoRepository.findById(idPedido).orElse(null);
+
+        pedidoRepository.delete(pedido);
+
+        return pedido;
+    }
+
 
 }

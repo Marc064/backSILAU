@@ -45,9 +45,9 @@ public class ClienteService {
         AdministradorModel administrador = administradorService.findById(idAdministrador);
         ClienteModel cliente = ClienteEmpresaDTO.toClienteModel(clienteEmpresa, administrador);
         EmpresaModel empresa = ClienteEmpresaDTO.toEmpresaModel(clienteEmpresa, cliente);
-
+        clienteRepository.save(cliente);
         empresaRepository.save(empresa);
-        return clienteRepository.save(cliente);
+        return cliente;
     }
 
     public ClienteModel update(ClienteEmpresaDTO dto, long idCliente) {

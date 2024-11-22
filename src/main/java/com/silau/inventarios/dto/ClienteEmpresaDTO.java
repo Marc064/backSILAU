@@ -18,7 +18,7 @@ public class ClienteEmpresaDTO {
     private String apellidoCliente;
     private String celularCliente;
     private String correoCliente;
-    private String nombreEmpresa;
+    private String nombreEmpresa;   
     private String codigoEmpresa;
     private String direccionEmpresa;
 

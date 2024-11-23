@@ -35,9 +35,9 @@ public class ProductoService {
     @Autowired
     private LineaProductoService lineaProductoService;
 
-    public List<ProductoDTO> findAll(){
+    public List<ProductoDTO> findAll() throws IOException {
         List<ProductoModel> productosAux = productoRepository.findAll();
-        List<ProductoDTO> productos = new ArrayList<ProductoDTO>();
+        List<ProductoDTO> productos = new ArrayList<>();
 
         for (ProductoModel productoAux : productosAux) {
             ProductoDTO producto = ProductoDTO.fromModel(productoAux);

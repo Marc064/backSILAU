@@ -1,0 +1,39 @@
+version: '3.8'  # Puedes cambiar a una versión reciente
+
+services:
+  app:
+    image: silausas_service  # Cambiado a minúsculas
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: SilauSAS_Spring
+    ports:
+      - "8080:8080"
+    environment:
+      JWT_SECRET_KEY: V7pEswY+xk7TXCdx8VjL8cmGabbWRMOTBxsur0QwNRs=
+      DB_URL: jdbc:postgresql://db:5432/SilauSAS_DB
+      DB_USERNAME: SILAU
+      DB_PASSWORD: SilauSAS
+    networks:
+      - silau-network
+
+  db:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: SilauSAS_DB
+      POSTGRES_USER: SILAU
+      POSTGRES_PASSWORD: SilauSAS
+    volumes:
+      - ./postgres.sql:/docker-entrypoint-initdb.d/postgres.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - silau-network
+
+volumes:
+  db-data:
+
+networks:
+  silau-network:
+    driver: bridge

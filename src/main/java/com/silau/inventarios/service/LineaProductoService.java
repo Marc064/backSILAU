@@ -1,7 +1,6 @@
 package com.silau.inventarios.service;
 
 import com.silau.inventarios.model.LineaProductoModel;
-import com.silau.inventarios.model.ProductoModel;
 import com.silau.inventarios.repository.LineaProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

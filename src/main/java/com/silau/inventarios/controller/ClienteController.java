@@ -30,16 +30,6 @@ public class ClienteController {
         }
     }
 
-    @GetMapping("/{idClient}")
-    public ResponseEntity<Object> findClient(@PathVariable Long idClient){
-        try{
-            ClienteDTO result = clienteService.findById(idClient);
-            return ResponseHandler.generateResponse("Success", HttpStatus.OK, result);
-        } catch (Exception e) {
-            return ResponseHandler.generateResponse(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR, null);
-        }
-    }
-
     @PostMapping("/{idAdministrador}")
     public ResponseEntity<Object> save(@PathVariable long idAdministrador, @RequestBody ClienteEmpresaDTO dto){
         try{

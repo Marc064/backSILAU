@@ -41,11 +41,6 @@ public class ClienteService {
         return clientes;
     }
 
-    public ClienteDTO findById(Long id){
-        ClienteModel cliente = clienteRepository.findById(id).orElse(null);
-        return ClienteDTO.fromModel(cliente, empresaService.findByCliente(cliente));
-    }
-
     public ClienteModel save(ClienteEmpresaDTO clienteEmpresa, long idAdministrador) {
         AdministradorModel administrador = administradorService.findById(idAdministrador);
         ClienteModel cliente = ClienteEmpresaDTO.toClienteModel(clienteEmpresa, administrador);

@@ -5,7 +5,6 @@ import com.silau.inventarios.dto.GuardarProductoDTO;
 import com.silau.inventarios.dto.ProductoDTO;
 import com.silau.inventarios.model.LineaProductoModel;
 import com.silau.inventarios.model.ProductoModel;
-import com.silau.inventarios.repository.LineaProductoRepository;
 import com.silau.inventarios.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,9 +23,6 @@ import java.util.UUID;
 @Service
 public class ProductoService {
 
-    @Value("${app.image.upload-dir}")
-    private String uploadDir;
-
     @Autowired
     private ProductoRepository productoRepository;
 
@@ -36,16 +32,12 @@ public class ProductoService {
     @Autowired
     private LineaProductoService lineaProductoService;
 
-    @Autowired
-    private LineaProductoRepository lineaProductoRepository;
-
     public List<ProductoDTO> findAll() throws IOException {
         List<ProductoModel> productosAux = productoRepository.findAll();
         List<ProductoDTO> productos = new ArrayList<>();
 
         for (ProductoModel productoAux : productosAux) {
-            LineaProductoModel lineaProducto = lineaProductoService.findById(productoAux.getLineaProducto().getIdLineaProducto());
-            ProductoDTO producto = ProductoDTO.fromModel(productoAux, lineaProducto);
+            ProductoDTO producto = ProductoDTO.fromModel(productoAux);
             productos.add(producto);
         }
 

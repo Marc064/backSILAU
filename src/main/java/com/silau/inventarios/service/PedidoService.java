@@ -35,7 +35,7 @@ public class PedidoService {
         for (PedidoModel pedidoModel : pedidos) {
             DetallePedidoModel detallePedido = detallePedidoService.findByPedido(pedidoModel);
             EmpresaModel empresa = empresaService.findByCliente(pedidoModel.getCliente());
-            PedidosDTO pedido = PedidosDTO.fromModels(pedidoModel, empresa, pedidoModel.getCliente(), detallePedido.getProducto());
+            PedidosDTO pedido = PedidosDTO.fromModels(pedidoModel, empresa, pedidoModel.getCliente(), detallePedido.getProducto(), detallePedido);
             pedidosDTO.add(pedido);
         }
 

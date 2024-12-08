@@ -40,7 +40,8 @@ public class ProductoService {
         List<ProductoDTO> productos = new ArrayList<>();
 
         for (ProductoModel productoAux : productosAux) {
-            ProductoDTO producto = ProductoDTO.fromModel(productoAux);
+            LineaProductoModel lineaProducto = lineaProductoService.findByProducto(productoAux);
+            ProductoDTO producto = ProductoDTO.fromModel(productoAux, lineaProducto);
             productos.add(producto);
         }
 

@@ -1,6 +1,7 @@
 package com.silau.inventarios.service;
 
 import com.silau.inventarios.model.LineaProductoModel;
+import com.silau.inventarios.model.ProductoModel;
 import com.silau.inventarios.repository.LineaProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,10 @@ public class LineaProductoService {
         LineaProductoModel lineaDelete = findById(idLineaProducto);
         lineaProductoRepository.delete(lineaDelete);
         return lineaDelete;
+    }
+
+    public LineaProductoModel findByProducto(ProductoModel productoModel) {
+        return lineaProductoRepository.findLineaProductoModelByProductoId(productoModel);
     }
 
 }

@@ -8,6 +8,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 public interface LineaProductoRepository extends JpaRepository<LineaProductoModel, Long>, JpaSpecificationExecutor<LineaProductoModel> {
 
     LineaProductoModel findByNombreLineaContainingIgnoreCase(String nombre);
-    LineaProductoModel findLineaProductoModelByProductoId(ProductoModel producto);
 
 }

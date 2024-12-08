@@ -40,8 +40,4 @@ public class LineaProductoService {
         return lineaDelete;
     }
 
-    public LineaProductoModel findByProducto(ProductoModel productoModel) {
-        return lineaProductoRepository.findLineaProductoModelByProductoId(productoModel);
-    }
-
 }
